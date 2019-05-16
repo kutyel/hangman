@@ -2,7 +2,7 @@ name:                haskell-hangman
 version:             0.1.0.0
 synopsis:            A hangman CLI game made in Haskell!
 homepage:            https://github.com/kutyel/haskell-hangman#readme
-license:             MIT
+license:             BSD3
 license-file:        LICENSE
 author:              Flavio Corpa
 maintainer:          flaviocorpa@gmail.com
