@@ -1,21 +1,22 @@
 module Main where
 
-import Control.Monad (forever)
-import Data.Char (toLower)
-import Data.List (intersperse)
-import Data.Maybe (isJust)
-import System.Exit (exitSuccess)
-import System.IO (BufferMode(NoBuffering), hSetBuffering, stdout)
-import System.Random (randomRIO)
+import           Control.Monad (forever)
+import           Data.Char     (toLower)
+import           Data.List     (intersperse)
+import           Data.Maybe    (isJust)
+import           System.Exit   (exitSuccess)
+import           System.IO     (BufferMode (NoBuffering), hSetBuffering, stdout)
+import           System.Random (randomRIO)
 
 newtype WordList =
   WordList [String]
   deriving (Eq, Show)
 
 data Puzzle =
-  Puzzle String -- word trying to guess
-         [Maybe Char] -- characters filled so far
-         [Char] -- letters guessed so far
+  Puzzle
+    String -- word trying to guess
+    [Maybe Char] -- characters filled so far
+    [Char] -- letters guessed so far
 
 instance Show Puzzle where
   show (Puzzle _ discovered guessed) =
@@ -63,7 +64,7 @@ alreadyGuessed :: Puzzle -> Char -> Bool
 alreadyGuessed (Puzzle _ _ guessed) = flip elem guessed
 
 renderPuzzleChar :: Maybe Char -> Char
-renderPuzzleChar Nothing = '_'
+renderPuzzleChar Nothing  = '_'
 renderPuzzleChar (Just c) = c
 
 fillInCharacter :: Puzzle -> Char -> Puzzle
@@ -118,7 +119,7 @@ runGame puzzle =
     guess <- getLine
     case guess of
       [c] -> handleGuess puzzle c >>= runGame
-      _ -> putStrLn "Your guess must be a single character"
+      _   -> putStrLn "Your guess must be a single character"
 
 main :: IO ()
 main = do
