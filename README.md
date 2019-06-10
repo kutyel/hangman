@@ -1,9 +1,9 @@
-# haskell-hangman
+# hangman
 
 👾 A hangman CLI game made in Haskell!
 
 ```sh
-*Main> main
+$ stack exec hangman
 Current puzzle is: _ _ _ _ _ _ _ _ Guessed so far:
 Guess a letter:
 a

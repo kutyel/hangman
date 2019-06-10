@@ -1,0 +1,43 @@
+name:                hangman
+version:             0.1.0.0
+synopsis:            A hangman CLI game made in Haskell!
+homepage:            https://github.com/kutyel/hangman#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Flavio Corpa
+maintainer:          flaviocorpa@gmail.com
+copyright:           Copyright © 2019 Flavio Corpa
+category:            Game
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+                   , data/dict.txt
+
+library
+  exposed-modules:     Hangman
+  ghc-options:         -Wall -fwarn-tabs
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , random
+                     , split
+
+executable hangman
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  other-modules:       Hangman
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , hangman
+                     , random
+
+test-suite tests
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  ghc-options:         -Wall -fno-warn-orphans
+  type:                exitcode-stdio-1.0
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , hangman
+                     , random
+                     , hspec
